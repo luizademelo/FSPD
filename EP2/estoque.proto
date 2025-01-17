@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+service Servidor{
+
+    rpc adiciona_produto(adiciona_produto_message) returns (adiciona_produto_message_response) {}
+    rpc altera_quantidade_produto(altera_produto_message) returns (altera_produto_message_response) {}
+    rpc lista_produtos (lista_produtos_message) returns (lista_produtos_message_response) {} 
+    rpc termina_execucao (termina_execucao_message) returns (termina_execucao_message_response) {}
+
+}
+
+message produto {
+    int32 prod_id = 1;
+    string descricao = 2;
+    int32 quantidade = 3;  
+}
+
+message adiciona_produto_message{
+ string descricao = 1;
+ int32 quantidade = 2; 
+}
+
+message altera_produto_message{
+    int32 prod_id = 1; 
+    int32 valor = 2; 
+}
+
+message lista_produtos_message {
+
+}
+
+message termina_execucao_message {
+
+}
+
+
+message adiciona_produto_message_response{
+ int32 prod_id = 1; 
+}
+
+message altera_produto_message_response{
+    int32 status = 1; 
+}
+
+message lista_produtos_message_response{
+    repeated produto lista_produtos = 1; 
+}
+
+message termina_execucao_message_response {
+    int32 quantidade_produtos = 1; 
+}

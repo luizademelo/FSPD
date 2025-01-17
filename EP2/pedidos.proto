@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+
+service ServidorPedidos {
+    rpc cria_pedido(cria_pedido_request) returns (cria_pedido_response);
+    rpc cancela_pedido(cancela_pedido_request) returns (cancela_pedido_response);
+    rpc fim_da_execucao(fim_da_execucao_request) returns (fim_da_execucao_response);
+}
+
+message cria_pedido_request {
+    repeated item itens = 1;
+}
+
+message cria_pedido_response {
+    int32 pedido_id = 1;
+    repeated resultado_item resultado = 2;
+}
+
+message cancela_pedido_request {
+    int32 pedido_id = 1;
+}
+
+message cancela_pedido_response {
+    int32 status = 1;
+}
+
+message fim_da_execucao_request {}
+
+message fim_da_execucao_response {
+    int32 estoque_quantidade = 1;
+    int32 pedidos_ativos = 2;
+}
+
+message item {
+    int32 prod_id = 1;
+    int32 quantidade = 2;
+}
+
+message resultado_item {
+    int32 prod_id = 1;
+    int32 status = 2;
+}
