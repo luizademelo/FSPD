@@ -46,7 +46,7 @@ def run():
         elif cmd_type == "L":
             response = stub.lista_produtos(estoque_pb2.lista_produtos_message())
             for product in response.lista_produtos:
-                print(f"{product.prod_id} {product.descricao} {product.quantidade}")
+                print(f"{product.prod_id} {product.quantidade} {product.descricao}")
 
         elif cmd_type == "F":
             # Termina o cliente e o servidor de estoque

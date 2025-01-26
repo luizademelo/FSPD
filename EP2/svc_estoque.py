@@ -46,8 +46,8 @@ class ServidorEstoque(estoque_pb2_grpc.ServidorServicer):
     def lista_produtos(self, request, context):
         return_list = [estoque_pb2.produto(
             prod_id=produto.prod_id,
-            descricao=produto.descricao, 
-            quantidade=produto.quantidade
+            quantidade=produto.quantidade,
+            descricao=produto.descricao
         ) 
         for produto in self.produtos.values()
         ]
